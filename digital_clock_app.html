@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>digital_clock_app</title>
+    
+    <style type="text/css">
+        #firstsection
+    
+    
+    </style>
+    
+	<script type="text/javascript">
+
+		function start() {
+			time();
+			window.setInterval("time()", 1000);
+		}
+		
+		function time() {
+			var now = new Date();
+			hours = now.getHours();
+			minutes = now.getMinutes();
+			seconds = now.getSeconds();
+		
+			thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
+			thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
+			thetime += (seconds < 10) ? "0" + seconds : seconds;
+		
+			element = document.getElementById("time");
+			element.innerHTML = thetime;
+		}	
+		</script>
+</head>
+		
+    <body onload="start();">
+		 
+        
+		<div id="firstsection">
+            <p>font size icon color seconds in title theme seconds 12-hour am/pm date week</p>
+            
+          
+        </div>
+        <div id="time"></div>
+        
+    </body>
+</html>
+
+
+
