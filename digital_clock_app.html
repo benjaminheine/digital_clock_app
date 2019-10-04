@@ -19,19 +19,64 @@
 			window.setInterval("time()", 1000);
 		}
 		
-		function time() {
+		// creating 24h format
+		/* function time() {
 			var now = new Date();
+			//creating time
 			hours = now.getHours();
 			minutes = now.getMinutes();
 			seconds = now.getSeconds();
-		
 			thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
 			thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
 			thetime += (seconds < 10) ? "0" + seconds : seconds;
-		
+			// putting time in the view
 			element = document.getElementById("time");
 			element.innerHTML = thetime;
+
+			// getting the weekday
+			var weekday = new Array(7);
+			weekday[0] = "Sunday";
+			weekday[1] = "Monday";
+			weekday[2] = "Tuesday";
+			weekday[3] = "Wednesday";
+			weekday[4] = "Thursday";
+			weekday[5] = "Friday";
+			weekday[6] = "Saturday";
+			var actualWeekday = weekday[now.getDay()];
+			// putting weekday in the view
+			secondelement = document.getElementById("date");
+			secondelement.innerHTML = actualWeekday;
+			
+			// getting month name
+			var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+			thirdelement = document.getElementById("monthname");
+			thirdelement.innerHTML = monthNames[now.getMonth()];
+			//document.write("The current month is " + monthNames[now.getMonth()]);
+
+			//getting date
+			var dayOfMonth = now.getDate();
+			forthElement = document.getElementById("monthday");
+			forthElement.innerHTML = dayOfMonth; */
+			
+			//creating 12h format
+			function time() {
+			var now = new Date();
+			//creating time
+			hours = now.getHours();
+			minutes = now.getMinutes();
+			seconds = now.getSeconds();
+			thetime = (hours >= 13) ? (hours - 12) + ":" : hours + ":";
+			thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
+			thetime += (seconds < 10) ? "0" + seconds : seconds;
+			// putting time in the view
+			element = document.getElementById("time");
+			element.innerHTML = thetime;
+
+			
+			
+			
 		}	
+		
 		</script>
 </head>
 		
@@ -44,6 +89,9 @@
           
         </div>
         <div id="time"></div>
+		<div id="date"></div>
+		<div id="monthname"></div>
+		<div id="monthday"></div>
         
     </body>
 </html>
