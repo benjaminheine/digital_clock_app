@@ -5,95 +5,142 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>digital_clock_app</title>
-    
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</head>
+
     <style type="text/css">
         #firstsection
     
     
     </style>
     
-	<script type="text/javascript">
-
-		function start() {
-			time();
-			window.setInterval("time()", 1000);
-		}
-		
-		// creating 24h format
-		/* function time() {
-			var now = new Date();
-			//creating time
-			hours = now.getHours();
-			minutes = now.getMinutes();
-			seconds = now.getSeconds();
-			thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
-			thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
-			thetime += (seconds < 10) ? "0" + seconds : seconds;
-			// putting time in the view
-			element = document.getElementById("time");
-			element.innerHTML = thetime;
-
-			// getting the weekday
-			var weekday = new Array(7);
-			weekday[0] = "Sunday";
-			weekday[1] = "Monday";
-			weekday[2] = "Tuesday";
-			weekday[3] = "Wednesday";
-			weekday[4] = "Thursday";
-			weekday[5] = "Friday";
-			weekday[6] = "Saturday";
-			var actualWeekday = weekday[now.getDay()];
-			// putting weekday in the view
-			secondelement = document.getElementById("date");
-			secondelement.innerHTML = actualWeekday;
-			
-			// getting month name
-			var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-			thirdelement = document.getElementById("monthname");
-			thirdelement.innerHTML = monthNames[now.getMonth()];
-			//document.write("The current month is " + monthNames[now.getMonth()]);
-
-			//getting date
-			var dayOfMonth = now.getDate();
-			forthElement = document.getElementById("monthday");
-			forthElement.innerHTML = dayOfMonth; */
-			
-			//creating 12h format
-			function time() {
-			var now = new Date();
-			//creating time
-			hours = now.getHours();
-			minutes = now.getMinutes();
-			seconds = now.getSeconds();
-			thetime = (hours >= 13) ? (hours - 12) + ":" : hours + ":";
-			thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
-			thetime += (seconds < 10) ? "0" + seconds : seconds;
-			// putting time in the view
-			element = document.getElementById("time");
-			element.innerHTML = thetime;
-
-			
-			
-			
-		}	
-		
-		</script>
+	
 </head>
 		
-    <body onload="start();">
+	<body onload="start();">
 		 
         
-		<div id="firstsection">
-            <p>font size icon color seconds in title theme seconds 12-hour am/pm date week</p>
-            
-          
-        </div>
-        <div id="time"></div>
-		<div id="date"></div>
-		<div id="monthname"></div>
-		<div id="monthday"></div>
-        
-    </body>
+		 <div id="firstsection">
+			 <table align="center">
+				<tr>
+					<td>theme</td>
+					<td>fontsize</td>
+					<td>icon color</td>
+					<td>seconds in title</td>
+					<td>seconds</td>
+					<td id="hour">12 hour <input type="checkbox" id="HourCheckBox" onclick="SwitchHour()"></td>
+					<td>am/pm</td>
+					<td>date</td>
+					<td>week</td>
+				
+				</tr>
+			 
+			 
+		   
+		 </div>
+		 <table align="center">
+			<tr>
+				<td id="time"></td>
+				<td id="date"></td>
+				<td id="monthname"></td>
+				<td id="monthday"></td>
+			</tr>
+		 
+			<script type="text/javascript">
+
+function start() {
+	/* SwitchHour()
+	time(true);
+	window.setInterval("time(true)", 1000);
+	//window.setInterval("time24h()", 1000); */
+	/* window.setInterval("time(true)", 1000); */
+	SwitchHour();
+	/* if (sethour) {
+		time(true);
+		window.setInterval("time(true)", 1000);
+	} else {
+		time(false);
+		window.setInterval("time(false)", 1000);
+	} */
+	
+}
+
+ // creating 24h format
+function time24h() {
+	
+		var now = new Date();
+	//creating time
+	hours = now.getHours();
+	minutes = now.getMinutes();
+	seconds = now.getSeconds();
+	thetime = (hours < 10) ? "0" + hours + ":" : hours + ":";
+	thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
+	thetime += (seconds < 10) ? "0" + seconds : seconds;
+	// putting time in the view
+	element = document.getElementById("time");
+	element.innerHTML = thetime;
+
+	// getting the weekday
+	var weekday = new Array(7);
+	weekday[0] = "Sunday";
+	weekday[1] = "Monday";
+	weekday[2] = "Tuesday";
+	weekday[3] = "Wednesday";
+	weekday[4] = "Thursday";
+	weekday[5] = "Friday";
+	weekday[6] = "Saturday";
+	var actualWeekday = weekday[now.getDay()];
+	// putting weekday in the view
+	secondelement = document.getElementById("date");
+	secondelement.innerHTML = actualWeekday;
+	
+	// getting month name
+	var monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+	thirdelement = document.getElementById("monthname");
+	thirdelement.innerHTML = monthNames[now.getMonth()];
+	//document.write("The current month is " + monthNames[now.getMonth()]);
+
+	//getting date
+	var dayOfMonth = now.getDate();
+	forthElement = document.getElementById("monthday");
+	forthElement.innerHTML = dayOfMonth;
+}
+	
+	
+	//creating 12h format
+	function time12h() {
+	var now = new Date();
+	//creating time
+	hours = now.getHours();
+	minutes = now.getMinutes();
+	seconds = now.getSeconds();
+	thetime = (hours >= 13) ? (hours - 12) + ":" : hours + ":";
+	thetime += (minutes < 10) ? "0" + minutes + ":" : minutes + ":";
+	thetime += (seconds < 10) ? "0" + seconds : seconds;
+	// putting time in the view
+	element = document.getElementById("time");
+	element.innerHTML = thetime	
+	}
+	 
+ function SwitchHour() {
+	 var SwitchHourBox = document.getElementById("HourCheckBox");
+	 if (HourCheckBox.checked == true) {
+		clearInterval(time24hint);
+		time12h();
+		var time12hint = window.setInterval("time12h()", 1000);
+	} else {
+		clearInterval(time12hint);
+		time24h();
+		var time24hint = window.setInterval("time24h()", 1000);
+		
+	}
+	}
+ 
+</script>
+	 </body>  
 </html>
 
 
